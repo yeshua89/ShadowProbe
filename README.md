@@ -136,6 +136,14 @@ docker compose run --rm dev cargo test scanner
 make check
 ```
 
+## 📚 Documentation
+
+- [Contributing Guide](docs/CONTRIBUTING.md)
+- [Changelog](docs/CHANGELOG.md)
+- [Roadmap](docs/ROADMAP.md)
+- [Security Policy](docs/SECURITY.md)
+- [Full Documentation](docs/)
+
 ## 🔒 Security Notice
 
 This tool is designed for authorized security testing only. Always obtain proper authorization before scanning any target.
