@@ -23,8 +23,13 @@ Built with Rust for maximum performance, with AI-powered analysis using Candle M
 No installation needed, everything runs in Docker:
 
 ```bash
-# Development with hot-reload
+# Development shell
 make dev
+
+# Then inside the container:
+# cargo run --bin shadowprobe
+# cargo test
+# cargo check
 
 # Run tests
 make test

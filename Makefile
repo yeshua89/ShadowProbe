@@ -14,7 +14,7 @@ help:
 	@echo "make clippy   - Run clippy linter"
 
 dev:
-	docker compose up dev
+	docker compose run --rm dev /bin/bash
 
 build:
 	docker compose run --rm build

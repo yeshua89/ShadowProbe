@@ -80,12 +80,10 @@ RUN apt-get update && apt-get install -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar cargo-watch para hot reload (versión compatible)
-RUN cargo install cargo-watch --version 8.4.0
-
 WORKDIR /app
 
 # El código se montará como volumen
 VOLUME ["/app"]
 
-CMD ["cargo", "watch", "-x", "run"]
+# Use shell para desarrollo interactivo
+CMD ["/bin/bash"]
