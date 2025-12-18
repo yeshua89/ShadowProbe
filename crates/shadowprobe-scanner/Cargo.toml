@@ -1,0 +1,20 @@
+[package]
+name = "shadowprobe-scanner"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+shadowprobe-core = { path = "../shadowprobe-core" }
+tokio = { workspace = true }
+reqwest = { workspace = true }
+scraper = { workspace = true }
+url = { workspace = true }
+serde = { workspace = true }
+regex = { workspace = true }
+rayon = { workspace = true }
+dashmap = { workspace = true }
+tracing = { workspace = true }
+anyhow = { workspace = true }
+async-trait = "0.1"

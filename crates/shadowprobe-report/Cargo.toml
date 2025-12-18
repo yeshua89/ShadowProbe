@@ -1,0 +1,13 @@
+[package]
+name = "shadowprobe-report"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+shadowprobe-core = { path = "../shadowprobe-core" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+chrono = { workspace = true }
+anyhow = { workspace = true }

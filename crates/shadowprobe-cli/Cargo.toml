@@ -1,0 +1,24 @@
+[package]
+name = "shadowprobe-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "shadowprobe"
+path = "src/main.rs"
+
+[dependencies]
+shadowprobe-core = { path = "../shadowprobe-core" }
+shadowprobe-scanner = { path = "../shadowprobe-scanner" }
+shadowprobe-ai = { path = "../shadowprobe-ai" }
+shadowprobe-report = { path = "../shadowprobe-report" }
+tokio = { workspace = true }
+clap = { workspace = true }
+colored = { workspace = true }
+indicatif = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = { workspace = true }
+serde_json = { workspace = true }

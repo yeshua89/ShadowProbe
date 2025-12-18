@@ -1,0 +1,61 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/shadowprobe-core",
+    "crates/shadowprobe-scanner",
+    "crates/shadowprobe-ai",
+    "crates/shadowprobe-report",
+    "crates/shadowprobe-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["ShadowProbe Contributors"]
+license = "MIT"
+repository = "https://github.com/yourusername/shadowprobe"
+
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1.41", features = ["full"] }
+reqwest = { version = "0.12", features = ["json", "cookies", "gzip"] }
+
+# Web scraping & parsing
+scraper = "0.21"
+url = "2.5"
+html5ever = "0.29"
+
+# AI/ML
+candle-core = "0.8"
+candle-nn = "0.8"
+tokenizers = "0.21"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.9"
+
+# CLI
+clap = { version = "4.5", features = ["derive", "env"] }
+colored = "2.1"
+indicatif = "0.17"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Error handling
+anyhow = "1.0"
+thiserror = "2.0"
+
+# Utilities
+regex = "1.11"
+rayon = "1.10"
+dashmap = "6.1"
+chrono = "0.4"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true

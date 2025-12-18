@@ -1,0 +1,61 @@
+services:
+  # Desarrollo con hot-reload
+  dev:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/app/target
+    working_dir: /app
+    environment:
+      - RUST_LOG=debug
+      - RUST_BACKTRACE=1
+    stdin_open: true
+    tty: true
+    networks:
+      - shadowprobe-net
+
+  # Build de producción
+  build:
+    build:
+      context: .
+      target: builder
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+    command: cargo build --release
+
+  # Runtime de producción
+  shadowprobe:
+    build:
+      context: .
+      target: runtime
+    volumes:
+      - ./output:/app/output
+    networks:
+      - shadowprobe-net
+    # Ejemplo de uso:
+    # command: scan --url https://example.com
+
+  # Testing container
+  test:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/app
+      - cargo-cache:/usr/local/cargo/registry
+      - target-cache:/app/target
+    command: cargo test --all
+    networks:
+      - shadowprobe-net
+
+volumes:
+  cargo-cache:
+  target-cache:
+
+networks:
+  shadowprobe-net:
+    driver: bridge
