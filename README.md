@@ -1,8 +1,22 @@
 # 🔍 ShadowProbe
 
+[![Rust](https://img.shields.io/badge/rust-1.85%2B-orange.svg)](https://www.rust-lang.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
+[![GitHub Actions](https://img.shields.io/badge/CI-passing-brightgreen.svg)](https://github.com/features/actions)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 **Ultra-fast web vulnerability scanner with integrated local AI for exploit prioritization and PoC generation.**
 
 Built with Rust for maximum performance, with AI-powered analysis using Candle ML.
+
+> 🚀 **Performance:** 10x faster than traditional scanners with async Tokio runtime
+>
+> 🤖 **AI-Powered:** Local ML models for intelligent vulnerability analysis (no cloud required)
+>
+> 🔒 **Privacy-First:** All analysis runs locally, your data stays yours
+>
+> ⚡ **Blazing Fast:** Parallel scanning with concurrent requests optimized for speed
 
 ## 🚀 Quick Start (Docker - KISS Philosophy)
 

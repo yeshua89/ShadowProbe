@@ -1,0 +1,21 @@
+name: "custom-pentest"
+description: "Custom profile for penetration testing"
+max_depth: 4
+max_concurrent_requests: 40
+timeout_seconds: 12
+follow_redirects: true
+user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+custom_headers:
+  Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+  Accept-Language: "en-US,en;q=0.5"
+  Accept-Encoding: "gzip, deflate"
+enabled_scanners:
+  - sqli
+  - xss
+  - ssrf
+  - lfi
+  - ssti
+enable_ai_analysis: true
+aggressive_mode: true
+use_evasion_techniques: true
+rate_limit_ms: null

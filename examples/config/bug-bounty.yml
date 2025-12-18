@@ -1,0 +1,19 @@
+name: "bug-bounty"
+description: "Profile optimized for bug bounty hunting"
+max_depth: 6
+max_concurrent_requests: 75
+timeout_seconds: 15
+follow_redirects: true
+user_agent: "ShadowProbe-BugBounty/0.1.0"
+custom_headers:
+  X-Bug-Bounty: "researcher"
+enabled_scanners:
+  - sqli
+  - xss
+  - ssrf
+  - lfi
+  - ssti
+enable_ai_analysis: true
+aggressive_mode: true
+use_evasion_techniques: true
+rate_limit_ms: 50
