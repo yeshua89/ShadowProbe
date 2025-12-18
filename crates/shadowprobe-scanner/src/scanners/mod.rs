@@ -3,6 +3,7 @@ pub mod xss;
 pub mod ssrf;
 pub mod lfi;
 pub mod ssti;
+pub mod command_injection;
 
 use crate::client::HttpClient;
 use shadowprobe_core::{Vulnerability, VulnerabilityType, Result};
@@ -27,6 +28,7 @@ impl ScannerEngine {
             Box::new(ssrf::SsrfScanner::new()),
             Box::new(lfi::LfiScanner::new()),
             Box::new(ssti::SstiScanner::new()),
+            Box::new(command_injection::CommandInjectionScanner::new()),
         ];
 
         Self { scanners }
