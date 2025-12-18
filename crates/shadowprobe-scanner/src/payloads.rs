@@ -226,6 +226,26 @@ impl PayloadSet {
                     description: "Backslash bypass".to_string(),
                     detection_patterns: vec![],
                 },
+                Payload {
+                    value: "http://evil.com".to_string(),
+                    description: "HTTP redirect".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "javascript:alert(document.domain)".to_string(),
+                    description: "JavaScript protocol".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "//google.com/%2f..".to_string(),
+                    description: "Double slash with traversal".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "https://evil.com@target.com".to_string(),
+                    description: "At-sign bypass".to_string(),
+                    detection_patterns: vec![],
+                },
             ],
         }
     }

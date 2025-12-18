@@ -6,6 +6,7 @@ pub mod ssti;
 pub mod command_injection;
 pub mod xxe;
 pub mod cors;
+pub mod open_redirect;
 
 use crate::client::HttpClient;
 use shadowprobe_core::{Vulnerability, VulnerabilityType, Result};
@@ -33,6 +34,7 @@ impl ScannerEngine {
             Box::new(command_injection::CommandInjectionScanner::new()),
             Box::new(xxe::XxeScanner::new()),
             Box::new(cors::CorsScanner::new()),
+            Box::new(open_redirect::OpenRedirectScanner::new()),
         ];
 
         Self { scanners }
