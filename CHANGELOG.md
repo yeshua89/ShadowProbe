@@ -8,10 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Advanced WAF evasion techniques
+- Command Injection scanner with timing analysis
+- XXE (XML External Entity) vulnerability scanner
+- CORS misconfiguration detector
+- Open Redirect scanner with multiple bypass techniques
+- Advanced WAF evasion techniques (encoding, obfuscation, polyglots)
+- Scan profile system (fast, balanced, deep, stealth modes)
+- Configuration management with YAML support
+- Comprehensive test suite for all modules
 - Benchmark suite for performance testing
 - Example configurations for various use cases
-- Comprehensive test suite
+- CLI enhancements: profile selection, WAF evasion mode, high-severity filter
+- Security policy and responsible disclosure guidelines
+- Installation and quick-scan utility scripts
+- Enhanced documentation with all scanner details
+
+### Changed
+- Improved README with 9+ scanner features and new examples
+- Enhanced CLI with more options and flexibility
+- Better payload coverage for open redirect detection
 
 ## [0.1.0] - 2025-01-XX
 
