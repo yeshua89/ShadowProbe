@@ -16,7 +16,7 @@ pub async fn run(
     concurrent: usize,
     timeout: u64,
     enable_ai: bool,
-    _aggressive: bool,
+    aggressive: bool,
     output: Option<String>,
     html: Option<String>,
     user_agent: String,

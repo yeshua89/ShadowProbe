@@ -61,6 +61,18 @@ enum Commands {
         /// Custom User-Agent
         #[arg(long, default_value = "ShadowProbe/0.1.0")]
         user_agent: String,
+
+        /// Use scan profile (fast/balanced/deep/stealth)
+        #[arg(short, long)]
+        profile: Option<String>,
+
+        /// Enable WAF evasion techniques
+        #[arg(long)]
+        evade: bool,
+
+        /// Show only high/critical findings
+        #[arg(long)]
+        high_only: bool,
     },
 
     /// List available vulnerability scanners
@@ -100,6 +112,9 @@ async fn main() -> anyhow::Result<()> {
             output,
             html,
             user_agent,
+            profile: _,
+            evade: _,
+            high_only: _,
         } => {
             commands::scan::run(
                 url,
