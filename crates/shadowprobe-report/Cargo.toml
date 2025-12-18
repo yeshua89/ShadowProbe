@@ -11,3 +11,4 @@ serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }
 anyhow = { workspace = true }
+html-escape = "0.2"

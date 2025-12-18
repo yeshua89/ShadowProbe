@@ -1,1 +1,26 @@
+# Rust
 /target
+**/*.rs.bk
+*.pdb
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Output files
+output/
+*.log
+*.json
+*.html
+
+# Environment
+.env
+.env.local
+
+# Docker volumes
+docker-compose.override.yml
