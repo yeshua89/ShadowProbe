@@ -134,6 +134,32 @@ docker compose run --rm dev cargo test scanner
 
 # Check compilation
 make check
+
+# Compare scan results
+./scripts/compare-scans.sh scan1.json scan2.json
+
+# Generate security badge
+./scripts/generate-badge.sh results.json
+```
+
+## 📊 Export Formats
+
+ShadowProbe supports multiple output formats:
+
+- **JSON** - Machine-readable, perfect for CI/CD integration
+- **HTML** - Beautiful visual reports with charts
+- **Markdown** - Documentation-friendly format
+- **CSV** - Spreadsheet analysis
+- **SARIF** - GitHub Security, VS Code integration
+
+```bash
+# Multiple formats at once
+shadowprobe scan --url https://target.com \
+  -o report.json \
+  --html report.html \
+  --markdown report.md \
+  --csv report.csv \
+  --sarif report.sarif
 ```
 
 ## 📚 Documentation
