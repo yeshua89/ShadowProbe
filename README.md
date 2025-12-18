@@ -57,14 +57,25 @@ make clean
 
 ## ✨ Features
 
-- ⚡ **Ultra-fast async scanning** with Tokio
-- 🤖 **Local AI analysis** with Candle (privacy-first, no cloud)
-- 🎯 **Smart vulnerability detection**: SQLi, XSS, SSRF, SSTI, LFI/RFI, Command Injection, etc.
+- ⚡ **Ultra-fast async scanning** with Tokio runtime
+- 🤖 **Local AI analysis** with Candle (privacy-first, no cloud required)
+- 🎯 **9+ Vulnerability Scanners**:
+  - SQL Injection (error-based, boolean, union, time-based)
+  - Cross-Site Scripting (reflected, DOM-based)
+  - SSRF (including cloud metadata exploitation)
+  - Server-Side Template Injection (Jinja2, Twig, ERB, etc.)
+  - Local File Inclusion / Path Traversal
+  - Command Injection (with timing analysis)
+  - XML External Entity (XXE)
+  - CORS Misconfiguration
+  - Open Redirect
+- 🛡️ **WAF Evasion**: Multiple encoding and obfuscation techniques
 - 📊 **Intelligent prioritization** using ML-based exploitability scoring
 - 🔧 **Auto PoC generation** for discovered vulnerabilities
-- 📁 **Multiple output formats**: JSON, HTML reports
+- 📁 **Multiple output formats**: JSON, HTML reports, Console
+- 🎭 **Scan Profiles**: Fast, Balanced, Deep, Stealth modes
 - 🔌 **Modular architecture** with plugin support
-- 🧩 **Nuclei template compatibility**
+- 🧩 **Nuclei template compatibility** (coming soon)
 
 ## 🏗️ Architecture
 
@@ -87,8 +98,15 @@ shadowprobe scan --url https://target.com
 # Aggressive scan with all modules
 shadowprobe scan --url https://target.com --aggressive
 
-# Custom scan with specific vulnerability types
-shadowprobe scan --url https://target.com --vulns sqli,xss,ssrf
+# Use predefined profiles
+shadowprobe scan --url https://target.com --profile stealth
+shadowprobe scan --url https://target.com --profile deep
+
+# Scan with WAF evasion
+shadowprobe scan --url https://target.com --evade
+
+# Show only critical/high severity findings
+shadowprobe scan --url https://target.com --high-only
 
 # Scan with custom depth and concurrency
 shadowprobe scan --url https://target.com --depth 5 --concurrent 100
@@ -96,8 +114,11 @@ shadowprobe scan --url https://target.com --depth 5 --concurrent 100
 # Disable AI analysis for faster scanning
 shadowprobe scan --url https://target.com --no-ai
 
-# Output to file
-shadowprobe scan --url https://target.com -o report.json
+# Output to multiple formats
+shadowprobe scan --url https://target.com -o report.json --html report.html
+
+# List available scanners
+shadowprobe list
 ```
 
 ## 📦 Development
