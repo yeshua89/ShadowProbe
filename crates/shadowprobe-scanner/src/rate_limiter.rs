@@ -30,10 +30,10 @@ impl RateLimiter {
 
     /// Wait for permission to make request
     pub async fn acquire(&self) -> RateLimitGuard {
-        let _permit = self.semaphore.acquire().await.unwrap();
+        let permit = self.semaphore.clone().acquire_owned().await.unwrap();
 
         // Enforce minimum delay between requests
-        let mut last = self.last_request.lock().await;
+        let last = self.last_request.lock().await;
         let elapsed = last.elapsed();
 
         if elapsed < self.min_delay {
@@ -44,7 +44,7 @@ impl RateLimiter {
 
         *self.last_request.lock().await = Instant::now();
 
-        RateLimitGuard { _permit }
+        RateLimitGuard { _permit: permit }
     }
 
     /// Adjust rate based on server response
@@ -66,7 +66,7 @@ impl RateLimiter {
 
 /// Guard that releases rate limit on drop
 pub struct RateLimitGuard {
-    _permit: tokio::sync::SemaphorePermit<'static>,
+    _permit: tokio::sync::OwnedSemaphorePermit,
 }
 
 /// Pre-configured rate limiters

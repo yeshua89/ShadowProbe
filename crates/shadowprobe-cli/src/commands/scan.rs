@@ -1,10 +1,9 @@
-use shadowprobe_core::{ScanConfig, ScanResult, ScanStatus};
+use shadowprobe_core::{ScanResult, ScanStatus};
 use shadowprobe_scanner::{Crawler, HttpClient, ScannerEngine};
 use shadowprobe_ai::VulnerabilityAnalyzer;
 use shadowprobe_report::{ConsoleReporter, HtmlReporter, JsonReporter, Reporter};
 use colored::*;
 use indicatif::{ProgressBar, ProgressStyle};
-use std::sync::Arc;
 use tokio::time::Instant;
 use tracing::{info, warn};
 use uuid::Uuid;

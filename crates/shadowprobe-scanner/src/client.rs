@@ -1,8 +1,8 @@
-use reqwest::{Client, Response, header};
+use reqwest::{Client, header};
 use shadowprobe_core::{Result, ShadowProbeError, HttpMethod};
 use std::time::Duration;
 use std::collections::HashMap;
-use tracing::{debug, warn};
+use tracing::debug;
 
 #[derive(Clone)]
 pub struct HttpClient {

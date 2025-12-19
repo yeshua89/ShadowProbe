@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
 use std::path::Path;
-use crate::{Result, ShadowProbeError, VulnerabilityType};
+use crate::{Result, ShadowProbeError};
 
 /// Scan profile configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]

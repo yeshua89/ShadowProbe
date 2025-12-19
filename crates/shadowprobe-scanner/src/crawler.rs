@@ -1,4 +1,4 @@
-use crate::client::{HttpClient, HttpResponse};
+use crate::client::HttpClient;
 use shadowprobe_core::{Result, ShadowProbeError};
 use scraper::{Html, Selector};
 use url::Url;
@@ -89,16 +89,12 @@ impl Crawler {
 
             drop(_permit);
 
-            let mut tasks = vec![];
+            // Process links sequentially to avoid borrow checker issues
             for link in links {
                 if !self.visited.contains(&link) && self.is_same_domain(&link) {
                     let sem = semaphore.clone();
-                    tasks.push(self.crawl_recursive(&link, depth + 1, sem));
+                    let _ = self.crawl_recursive(&link, depth + 1, sem).await;
                 }
-            }
-
-            for task in tasks {
-                let _ = task.await;
             }
 
             Ok(())

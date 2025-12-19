@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use chrono::{DateTime, Utc};
-use url::Url;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Target {

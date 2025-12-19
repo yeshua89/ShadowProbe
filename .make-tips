@@ -1,0 +1,22 @@
+╔═══════════════════════════════════════════════════════════════╗
+║  💡 TIPS RÁPIDOS - ShadowProbe                                ║
+╚═══════════════════════════════════════════════════════════════╝
+
+📌 COMANDOS MÁS ÚTILES:
+   make compile   - Compilar rápido
+   make test      - Ejecutar tests
+   make quick     - Compile + test en uno
+   make dev       - Shell interactiva (para trabajo largo)
+
+🎯 CUÁNDO USAR QUÉ:
+   - 1 tarea → use 'make [comando]'
+   - Trabajo prolongado → use 'make dev'
+
+⚠️  RECUERDA:
+   - Dentro de 'make dev' usa comandos 'cargo', no 'make'
+   - Sal de la shell con 'exit' o Ctrl+D
+
+📖 MÁS INFO:
+   make help      - Lista completa de comandos
+   cat USAGE.md   - Guía detallada
+   cat WORKFLOW.md - Guía visual de flujos

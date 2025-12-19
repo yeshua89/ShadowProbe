@@ -1,5 +1,5 @@
 use anyhow::Result;
-use tracing::{info, warn};
+use tracing::info;
 
 /// AI Model wrapper for vulnerability analysis
 /// Currently using a rule-based approach, can be extended with Candle ML models
@@ -46,7 +46,7 @@ impl VulnAnalysisModel {
     }
 
     fn calculate_confidence(&self, vuln_type: &str, evidence: &str, response_body: &str) -> f32 {
-        let mut confidence = 0.5;
+        let mut confidence: f32 = 0.5;
 
         // Evidence strength
         if !evidence.is_empty() {
